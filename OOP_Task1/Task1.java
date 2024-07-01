@@ -1,4 +1,4 @@
-package OOP;
+package OOP_Task1;
 import static print_module.print_library.println;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 public class Task1 {
 
     public static void main(String[] args) {
-        println("Hello");
+        println("Hello Task1");
 
         // Comparable<Long> comparable = new Comparable<Long>() {
 
@@ -45,7 +45,15 @@ public class Task1 {
         println("Выводим список после удаления элемента по индексу 0: ");
         println(list);
 
-        // list = new ArrayList<>(); // В данном случае будет ошибка компиляции, потому что мы пытаемся переопределить список на новый тип списка
+        // list = new ArrayList<>(); // В данном случае будет ошибка компиляции, потому что мы пытаемся переопределить final список на новый тип списка
+
+        /*
+         * В данном случае мы можем создать такой список, несмотря на то, что запись <? super String>
+         * говорит о том что мы можем помещать все типы которые наследуются от String, хотя от String нельзя наследоваться,
+         * так как он final, но здесь не возникает ошибка, потому что мы можем помещать в этот список сами объекты типа String
+         */
+        List<? super String> list1 = new ArrayList<>();
+        list1.add("Hello");
 
         
     }

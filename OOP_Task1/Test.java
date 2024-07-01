@@ -1,6 +1,6 @@
-package OOP;
+package OOP_Task1;
 
-public class Test implements Some{
+public class Test extends MyTestClass implements Some{
     public Test() {
     }
 
