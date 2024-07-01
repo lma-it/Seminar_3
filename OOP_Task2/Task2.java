@@ -1,7 +1,7 @@
 package OOP_Task2;
 import static print_module.print_library.println;
 
-import java.util.Iterator;
+// import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -23,6 +23,10 @@ import java.util.List;
  * Данные методы необходимо переопределить и построить их логику так, как необходимо чтоб перебиралась коллекция
  * </p>
  * 
+ * <p>
+ * Далее рассмотрим интерфейс {@code Iterable} на примере класса {@link OOP_Task2.StudentGroup StudentGroup}, который мы имплементируем от
+ * интерфейса {@code Iterable} и переопределим в нем единственный метод {@link OOP_Task2.StudentGroup#iterator() iterator()}
+ * </p>
  */
 public class Task2 {
     public static void main(String[] args) {
@@ -32,15 +36,24 @@ public class Task2 {
         Student pupil1 = new Student("Lora");
         Student pupil2 = new Student("Alice");
         Student pupil3 = new Student("Lev");
+        Student pupil4 = new Student("Leon");
 
         StudentGroup sg = new StudentGroup();
         sg.setStudents(List.of(pupil, pupil1, pupil2, pupil3));
+        sg.setStudent(pupil4);
 
         println(sg.getSize());
 
-        Iterator<Student> iterator = new StudentGroupIterator(sg);
-        while(iterator.hasNext()){
-            println(iterator.next().toString());
+        // Iterator<Student> iterator = new StudentGroupIterator(sg);
+        // StudentGroupIterator iterator = new StudentGroupIterator(sg); // В обоих случаях итерация работает как положено.
+        // while(iterator.hasNext()){
+        //     println(iterator.next());
+        // }
+
+        // Благодаря реализации интерфейса Iterable в классе StudentGroup мы можем без проблем пробегать по нашей коллекции студентов
+        // циклом for-each
+        for (Student student : sg) {
+            println(student);
         }
 
 
