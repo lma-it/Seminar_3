@@ -4,7 +4,7 @@ import static print_module.print_library.println;
 // import java.util.Iterator;
 import java.util.List;
 import java.util.Collections;
-import java.util.Comparator;
+// import java.util.Comparator;
 import java.util.ArrayList;
 
 /**
@@ -74,6 +74,37 @@ public class Task2 {
         // Collections.sort(studentList, (o1, o2) -> {return o1.getId() - o2.getId();});
 
         println(studentList);
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Выполнение домашнего задания
+
+        Student pupil5 = new Student("Aleksey", 245);
+        Student pupil6 = new Student("Vladimir", 2245);
+        Student pupil7 = new Student("Petya", 125);
+        Student pupil8 = new Student("Vasya", 25);
+        Student pupil9 = new Student("Olegoff", 284);
+        Student pupil10 = new Student("Nikita", 5859);
+
+        StudentGroup sg2 = new StudentGroup();
+        sg2.setStudents(List.of(pupil5, pupil6, pupil7, pupil8, pupil9, pupil10));
+
+
+        Student pupil11 = new Student("Volodya", 19);
+        Student pupil12 = new Student("Alena", 851);
+        Student pupil13 = new Student("Svetlana", 970);
+        Student pupil14 = new Student("Vitalina", 20);
+
+        StudentGroup sg3 = new StudentGroup();
+        sg3.setStudents(List.of(pupil11, pupil12, pupil13, pupil14));
+
+        StudentStream studentStream = new StudentStream(List.of(sg, sg2, sg3));
+
+        System.out.println(studentStream);
+
+        for (StudentGroup studentGroup : studentStream) {
+            println(studentGroup);
+        }
+
 
 
 

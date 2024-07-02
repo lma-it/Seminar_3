@@ -53,6 +53,11 @@ public class StudentGroup implements Iterable<Student>{
     }
 
     @Override
+    public String toString() {
+        return String.format("Группа студентов: %s", this.students);
+    }
+
+    @Override
     public Iterator<Student> iterator() {
         return new StudentGroupIterator(this);
     }
