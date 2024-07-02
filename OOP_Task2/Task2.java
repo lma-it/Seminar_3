@@ -33,19 +33,26 @@ import java.util.ArrayList;
  */
 public class Task2 {
     public static void main(String[] args) {
+
+        /*                                                   РАБОТА НА СЕМИНАРЕ                                                          */
+        
         println("Hello Task2");
 
+        // Создание студентов для первой группы (sg)
         Student pupil = new Student("Igor", 23);
         Student pupil1 = new Student("Evgeniy", 52);
         Student pupil2 = new Student("Alice", 736);
         Student pupil3 = new Student("Lev", 13);
         Student pupil4 = new Student("Michael", 582);
 
+        // Создание группы sg
         StudentGroup sg = new StudentGroup();
-        sg.setStudents(List.of(pupil, pupil1, pupil2, pupil3));
-        sg.setStudent(pupil4);
 
-        println(sg.getSize());
+        // Добавление студентов в группу списком
+        sg.setStudents(List.of(pupil, pupil1, pupil2, pupil3));
+
+        // Добавление студента в группу по одному
+        sg.setStudent(pupil4);
 
         // Iterator<Student> iterator = new StudentGroupIterator(sg);
         // StudentGroupIterator iterator = new StudentGroupIterator(sg); // В обоих случаях итерация работает как положено.
@@ -59,8 +66,9 @@ public class Task2 {
             println(student);
         }
 
-        
+        // Создание списка студентов для сравнивания
         ArrayList<Student> studentList = new ArrayList<>(List.of(pupil, pupil1, pupil2, pupil3, pupil4));
+        // печать до использования Collections.sort
         println(studentList);
 
         // Сортировка через пользовательский Comparator
@@ -73,11 +81,13 @@ public class Task2 {
         // Еще один способ записи лямбда выражения
         // Collections.sort(studentList, (o1, o2) -> {return o1.getId() - o2.getId();});
 
+        // Печать после сортировки
         println(studentList);
 
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Выполнение домашнего задания
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /*                                                  ДОМАШНЯЯ РАБОТА                                                         */
 
+        // Инициализация студентов для второй группы (sg2)
         Student pupil5 = new Student("Aleksey", 245);
         Student pupil6 = new Student("Vladimir", 2245);
         Student pupil7 = new Student("Petya", 125);
@@ -85,23 +95,42 @@ public class Task2 {
         Student pupil9 = new Student("Olegoff", 284);
         Student pupil10 = new Student("Nikita", 5859);
 
+        // Создание второй группы (sg2)
         StudentGroup sg2 = new StudentGroup();
+        // Добавление всех студентов в группу списком
         sg2.setStudents(List.of(pupil5, pupil6, pupil7, pupil8, pupil9, pupil10));
 
 
+        // Инициализация студентов для третьей группы (sg3)
         Student pupil11 = new Student("Volodya", 19);
         Student pupil12 = new Student("Alena", 851);
         Student pupil13 = new Student("Svetlana", 970);
         Student pupil14 = new Student("Vitalina", 20);
 
+        // Создание третьей группы (sg3)
         StudentGroup sg3 = new StudentGroup();
+        // Добавление всех студентов в группу списком
         sg3.setStudents(List.of(pupil11, pupil12, pupil13, pupil14));
 
-        StudentStream studentStream = new StudentStream(List.of(sg, sg2, sg3));
+        // Создание потоков названием потока и добавление групп студентов в потоки
+        StudentStream streamProgrammers = new StudentStream(List.of(sg, sg2), "Программист");
+        StudentStream streamTesters = new StudentStream(sg3, "Тестировкик");
 
-        System.out.println(studentStream);
+        // Создать список всех потоков для дальнейшей их сортировки
+        List<StudentStream> streams = new ArrayList<>();
+        // Добавление потоков с группами в список потоков
+        streams.addAll(List.of(streamProgrammers, streamTesters));
 
-        for (StudentGroup studentGroup : studentStream) {
+        println();
+        println("Печать потоков до сортировки: ");
+        println(streams);
+        Collections.sort(streams, new StreamComparator());
+        println();
+        println("Печать потоков после сортировки: ");
+        println(streams);
+
+        println("\nПечать групп из потока streamProgrammers через цикл for-each после реализации интерфейса Iterable в классе StudentStream: ");
+        for (StudentGroup studentGroup : streamProgrammers) {
             println(studentGroup);
         }
 
