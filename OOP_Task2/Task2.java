@@ -3,6 +3,9 @@ import static print_module.print_library.println;
 
 // import java.util.Iterator;
 import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.ArrayList;
 
 /**
  * <p>
@@ -32,11 +35,11 @@ public class Task2 {
     public static void main(String[] args) {
         println("Hello Task2");
 
-        Student pupil = new Student("Igor");
-        Student pupil1 = new Student("Lora");
-        Student pupil2 = new Student("Alice");
-        Student pupil3 = new Student("Lev");
-        Student pupil4 = new Student("Leon");
+        Student pupil = new Student("Igor", 23);
+        Student pupil1 = new Student("Evgeniy", 52);
+        Student pupil2 = new Student("Alice", 736);
+        Student pupil3 = new Student("Lev", 13);
+        Student pupil4 = new Student("Michael", 582);
 
         StudentGroup sg = new StudentGroup();
         sg.setStudents(List.of(pupil, pupil1, pupil2, pupil3));
@@ -55,6 +58,22 @@ public class Task2 {
         for (Student student : sg) {
             println(student);
         }
+
+        
+        ArrayList<Student> studentList = new ArrayList<>(List.of(pupil, pupil1, pupil2, pupil3, pupil4));
+        println(studentList);
+
+        // Сортировка через пользовательский Comparator
+        //Collections.sort(studentList, new StudentComparator());
+
+        // Ниже представлен Comparator через лямбда выражение.
+        // Это может работать в данном случае, потому что у Comparator только один абстрактный метод
+        Collections.sort(studentList, (o1, o2) -> o1.getId() - o2.getId());
+
+        // Еще один способ записи лямбда выражения
+        // Collections.sort(studentList, (o1, o2) -> {return o1.getId() - o2.getId();});
+
+        println(studentList);
 
 
 
