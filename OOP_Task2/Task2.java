@@ -120,16 +120,32 @@ public class Task2 {
         List<StudentStream> streams = new ArrayList<>();
         // Добавление потоков с группами в список потоков
         streams.addAll(List.of(streamProgrammers, streamTesters));
-
+        
         println();
         println("Печать потоков до сортировки: ");
         println(streams);
-        Collections.sort(streams, new StreamComparator());
+
+        // Создание экземпляра класса StreamServise м вызов у него метода sort() для сортировки списка потоков
+        StreamService streamService = new StreamService(new StreamComparator());
+        // Сортировака потоков в порядке возрастания пользовательским методом sort из класса StreamService
+        // streamService.sort(streams);
+        // println();
+        // println("Печать потоков после сортировки в порядке возрастания: ");
+        // println(streams);
+
+        // Сортировака потоков в порядке убывания пользовательским методом sort из класса StreamService
+        streamService.sort(streams, streamService.reverse);
         println();
-        println("Печать потоков после сортировки: ");
+        println("Печать потоков после сортировки в порядке убывания: ");
         println(streams);
 
-        println("\nПечать групп из потока streamProgrammers через цикл for-each после реализации интерфейса Iterable в классе StudentStream: ");
+        // Сортировака потоков в порядке возрастания с помощью Collections и пользовательского StreamComparator
+        // Collections.sort(streams, new StreamComparator());
+        // println();
+        // println("Печать потоков после сортировки: ");
+        // println(streams);
+
+        println("\nПечать групп студентов, из потока streamProgrammers, через цикл for-each после реализации интерфейса Iterable в классе StudentStream: ");
         for (StudentGroup studentGroup : streamProgrammers) {
             println(studentGroup);
         }
